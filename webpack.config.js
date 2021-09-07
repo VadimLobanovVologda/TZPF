@@ -7,8 +7,8 @@ module.exports = {
   mode: 'development',
   entry: './src/index.jsx',
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: '[name].[hash].js',
+    path: path.resolve(__dirname, 'public'),
+    filename: '[name].js',
     publicPath: '/',
   },
   resolve: {

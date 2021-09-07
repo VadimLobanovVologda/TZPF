@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import InputMask from 'react-input-mask';
 import ReactInputDateMask from 'react-input-date-mask';
 import { useDispatch } from 'react-redux';
-import { editEmployee } from 'actions/employeeActions';
+import { editEmployee, addEmployee } from 'actions/employeeActions';
 import styles from './dataBox.scss';
 
 export default ({ dataEmployee, actionUrl }) => {
@@ -26,8 +26,19 @@ export default ({ dataEmployee, actionUrl }) => {
         isArchive,
         birthday,
       };
-      console.log(newEmployee);
       dispatch(editEmployee(newEmployee));
+      return;
+    }
+    if (nameEl === 'create') {
+      const newEmployee = {
+        ...dataEmployee,
+        name,
+        phone,
+        role,
+        isArchive,
+        birthday,
+      };
+      dispatch(addEmployee(newEmployee));
       return;
     }
     setBirthday(dataEmployee.birthday);
@@ -115,7 +126,14 @@ export default ({ dataEmployee, actionUrl }) => {
 
         <div className="saveBox">
           {edit ? <input type="button" name="cancel" value="Отмена" onClick={editForm} /> : null}
-          {edit ? <input type="button" name="save" value="Сохранить" onClick={editForm} /> : null}
+          {edit ? (
+            <input
+              type="button"
+              name={actionUrl === 'create' ? 'create' : 'save'}
+              value="Сохранить"
+              onClick={editForm}
+            />
+          ) : null}
         </div>
       </form>
     </div>
