@@ -39,7 +39,7 @@ export default () => {
           </NavLink>
         </div>
         <PhotoBox />
-        <DataBox dataEmployee={dataEmployee} />
+        <DataBox dataEmployee={dataEmployee} actionUrl={action} />
       </div>
     </main>
   );

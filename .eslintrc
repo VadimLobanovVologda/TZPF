@@ -23,6 +23,7 @@
     "import/no-unresolved": "off",
     "import/extensions": "off",
     "import/prefer-default-export": "off",
+    "jsx-a11y/label-has-associated-control": "off",
     "max-len": [
       "error",
       {

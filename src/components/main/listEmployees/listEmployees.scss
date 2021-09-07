@@ -25,5 +25,29 @@
         cursor: pointer;
       }
     }
+    .btn-add {
+      border: 0px solid transparent;
+      width: 100%;
+      margin-top: 10px;
+      margin-bottom: 20px;
+      padding: 4px 0;
+      border-radius: 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #eee;
+    }
+    .btn-add:hover {
+      background: #ffd900;
+      cursor: pointer;
+      box-shadow:  3px 3px 5px #aaaaaa,
+             -3px -3px 5px #ffffff;
+    }
+    .btn-add:active {
+      cursor: pointer;
+      background: #ffd900;
+      box-shadow: inset 3px 3px 3px #a8a490,
+            inset -3px -3px 3px #ffec7e;
+    }
   }
 }

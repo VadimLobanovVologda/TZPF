@@ -12,9 +12,15 @@ export default () => {
   const openProfile = (id) => {
     history.push(`/edit/${id}`);
   };
+  const createProfile = () => {
+    history.push('/create');
+  };
   return (
     <div className={styles.listEmployees}>
       <div className="list">
+        <button type="button" className="btn-add" onClick={createProfile}>
+          Добавить сотрудника
+        </button>
         <Table striped bordered hover>
           <thead>
             <tr>
