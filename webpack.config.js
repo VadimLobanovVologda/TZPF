@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   mode: 'development',
@@ -8,17 +9,19 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].[hash].js',
+    publicPath: '/',
   },
   resolve: {
     extensions: ['.jsx', '.js', '.scss', '.css'],
     alias: {
       images: path.resolve('src/assets/images'),
-      actions: path.resolve('src/actions'),
+      actions: path.resolve('src/store/actions'),
       styles: path.resolve('src/assets/styles'),
       helpers: path.resolve('src/helpers'),
       components: path.resolve('src/components'),
       node_modules: path.resolve('src/node_modules'),
-      data: path.resolve('src/assets/data'),
+      data: path.resolve('src/store/data'),
+      store: path.resolve('src/store'),
     },
   },
   module: {
@@ -47,7 +50,7 @@ module.exports = {
         test: /.(css|scss)$/,
         exclude: /node_modules/,
         use: [
-          'style-loader',
+          MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
             options: {
@@ -81,11 +84,14 @@ module.exports = {
   devServer: {
     port: 3000,
     hot: true,
+    historyApiFallback: true,
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.html',
+      favicon: './src/assets/images/faviconPF.ico',
     }),
     new CleanWebpackPlugin(),
+    new MiniCssExtractPlugin(),
   ],
 };

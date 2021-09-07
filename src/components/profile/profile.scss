@@ -1,0 +1,52 @@
+$bgColor: #dadada;
+$colorShadow: #ddd;
+.profile :global {
+  flex: 1;
+  background: $bgColor;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  .profileContent {
+    background: $bgColor;
+    
+    border-radius: 20px;
+    background: #e0e0e0;
+    box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
+    display: flex;
+    @media (max-width: 600px) {
+      flex-direction: column;
+    }
+    position: relative;
+    .close-btn {
+      position: absolute;
+      top: 0;
+      right: 0;
+      border-radius: 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      a {
+        height: 50px;
+        width: 50px;
+        text-align: center;
+        // background: transparent;
+        // border-radius: 10px;
+        // border: 0px solid transparent;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img {
+          width: 50%;
+          height: 50%;
+        }
+      }
+    }
+  }
+  .errorUrl {
+    color: #fff;
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+}

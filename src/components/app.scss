@@ -1,4 +1,5 @@
-.app :global{
-  background: #333;
-  color: red;
+.app :global {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 }

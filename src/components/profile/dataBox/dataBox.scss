@@ -1,0 +1,102 @@
+.dataBox :global {
+  margin-top: 30px;
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  @media (max-width: 600px) {
+    justify-content: center;
+    align-items: flex-start;
+  }
+  .dataBoxContent {
+    margin: 20px 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .edit-btn {
+      width: 100%;
+      max-width: 400px;
+      height: 30px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      input {
+        background: #ccc;
+        border-radius: 10px;
+        overflow: hidden;
+        border: 2px solid #ccc;
+        margin: 2px 5px;
+      }
+      input:hover {
+        padding: 3px 6px;
+        border: 0px solid #eee;
+        box-shadow: 3px 3px 7px #afafaf, -3px -3px 7px #ffffff;
+      }
+      input:active {
+        padding: 3px 6px;
+        border: 0px solid transparent;
+        box-shadow: inset 3px 3px 7px #b6b6b6, inset -3px -3px 7px #ffffff;
+      }
+    }
+    label {
+      margin-bottom: 10px;
+      width: 100%;
+      max-width: 400px;
+      display: flex;
+      justify-content: space-between;
+      input {
+        margin-left: 10px;
+        padding-left: 10px;
+        border: 0px solid #333;
+        border-bottom: 1px solid #777;
+        background: transparent;
+        flex: 1;
+        text-align: right;
+      }
+      span {
+        display: flex;
+        align-items: center;
+        input {
+          width: 20px;
+          height: 20px;
+          margin-right: 10px;
+        }
+      }
+      select {
+        margin-left: 10px;
+        border: 0px solid transparent;
+        border-radius: 5px;
+        padding: 2px 5px;
+        outline: none;
+      }
+    }
+    .saveBox {
+      height: 30px;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      input {
+        height: 30px;
+        background: #ccc;
+        border-radius: 10px;
+        overflow: hidden;
+        border: 2px solid #ccc;
+        margin: 2px 5px;
+      }
+      input:hover {
+        padding: 3px 6px;
+        border: 0px solid #eee;
+        box-shadow: 3px 3px 7px #afafaf, -3px -3px 7px #ffffff;
+      }
+      input:active {
+        padding: 3px 6px;
+        border: 0px solid transparent;
+        box-shadow: inset 3px 3px 7px #b6b6b6, inset -3px -3px 7px #ffffff;
+      }
+    }
+  }
+}

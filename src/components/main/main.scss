@@ -1,0 +1,15 @@
+.main :global {
+  flex: 1;
+  color: #333;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  padding-top: 0px;
+  .mainContent {
+    width: 100%;
+    max-width: 900px;
+    display: flex;
+    flex-direction: column;
+  }
+}

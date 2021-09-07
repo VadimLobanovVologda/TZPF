@@ -1,0 +1,25 @@
+.photoBox :global {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @media (max-width: 600px) {
+    justify-content: center;
+    align-items: center;
+  }
+  .photoBoxContent {
+    -webkit-box-shadow: 3px 3px 8px 0px rgb(83, 83, 83), -3px -3px 8px 0px #fff;
+    -moz-box-shadow: 3px 3px 8px 0px rgb(83, 83, 83), -3px -3px 8px 0px #fff;
+    box-shadow: 3px 3px 8px 0px rgb(83, 83, 83), -3px -3px 8px 0px #fff;
+    background: #555;
+    padding: 20px;
+    border-radius: 20px;
+    min-height: 150px;
+    min-width: 150px;
+    color: #999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

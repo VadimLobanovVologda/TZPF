@@ -1,0 +1,15 @@
+.header :global {
+  background: #fff;
+  color: #333;
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 20px;
+  border-bottom: 4px solid #333;
+  .headerContent {
+    padding: 10px;
+    max-width: 1080px;
+    width: 100%;
+  }
+}

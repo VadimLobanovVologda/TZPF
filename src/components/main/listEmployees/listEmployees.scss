@@ -1,0 +1,29 @@
+.listEmployees :global {
+  flex: 1;
+  background: #fff;
+  padding: 10px;
+  border-radius: 20px;
+  overflow: hidden;
+  .list {
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 3px 3px 7px #afafaf, -3px -3px 7px #ffffff;
+    padding: 10px;
+    table {
+      border: 0px solid transparent;
+      padding: 10px;
+      border-radius: 20px;
+      overflow: hidden;
+      margin-bottom: 0;
+      th {
+        background: #ccc;
+        color: #333;
+      }
+      tr:hover {
+        background: #ffd900;
+        color: #333;
+        cursor: pointer;
+      }
+    }
+  }
+}
