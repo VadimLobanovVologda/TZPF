@@ -9,7 +9,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'public'),
     filename: '[name].js',
-    publicPath: '/',
+    publicPath: './',
   },
   resolve: {
     extensions: ['.jsx', '.js', '.scss', '.css'],
@@ -90,6 +90,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './src/index.html',
       favicon: './src/assets/images/faviconPF.ico',
+      inject: 'body',
     }),
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin(),

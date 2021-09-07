@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Table } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
@@ -9,11 +9,37 @@ export default () => {
   const history = useHistory();
   const { employees } = useSelector((state) => state.employees);
   const { role: roleFilter, status: statusFilter } = useSelector((state) => state.form);
+  const [users, setUsers] = useState(employees);
+  const [sortName, setSortName] = useState(false);
+  const [sortDate, setSortDate] = useState(false);
+
   const openProfile = (id) => {
     history.push(`/edit/${id}`);
   };
   const createProfile = () => {
     history.push('/create');
+  };
+
+  const sortTable = (prop) => {
+    if (prop === 'name') {
+      const newTable = employees.sort((a, b) => {
+        if (a[`${prop}`] < b[`${prop}`]) return sortName ? 1 : -1;
+        if (a[`${prop}`] > b[`${prop}`]) return sortName ? -1 : 1;
+        return 0;
+      });
+      setSortName(!sortName);
+      setUsers(newTable);
+      return;
+    }
+    if (prop === 'birthday') {
+      const newTable = employees.sort((a, b) => {
+        if (new Date(a[`${prop}`]) < new Date(b[`${prop}`])) return sortDate ? 1 : -1;
+        if (new Date(a[`${prop}`]) > new Date(b[`${prop}`])) return sortDate ? -1 : 1;
+        return 0;
+      });
+      setSortDate(!sortDate);
+      setUsers(newTable);
+    }
   };
   return (
     <div className={styles.listEmployees}>
@@ -24,14 +50,22 @@ export default () => {
         <Table striped bordered hover>
           <thead>
             <tr>
-              <th>Имя</th>
+              <th onClick={() => sortTable('name')}>
+                Имя
+                {' '}
+                {sortName ? '▼' : '▲'}
+              </th>
               <th>Должность</th>
               <th>Номер телефона</th>
-              <th>Год рождения</th>
+              <th onClick={() => sortTable('birthday')}>
+                Год рождения
+                {' '}
+                {sortDate ? '▼' : '▲'}
+              </th>
             </tr>
           </thead>
           <tbody>
-            {employees.reduce((filterEmp, employee) => {
+            {users.reduce((filterEmp, employee) => {
               const {
                 name, phone, role, birthday, id, isArchive,
               } = employee;

@@ -4,9 +4,17 @@
   padding: 10px;
   border-radius: 20px;
   overflow: hidden;
+  @media (max-width: 300px) {
+    font-size: 12px;
+    font-weight: 200;
+    * {
+      margin: 0;
+      padding: 0;
+    }
+  }
   .list {
     border-radius: 20px;
-    overflow: hidden;
+    overflow: auto;
     box-shadow: 3px 3px 7px #afafaf, -3px -3px 7px #ffffff;
     padding: 10px;
     table {
@@ -40,14 +48,12 @@
     .btn-add:hover {
       background: #ffd900;
       cursor: pointer;
-      box-shadow:  3px 3px 5px #aaaaaa,
-             -3px -3px 5px #ffffff;
+      box-shadow: 3px 3px 5px #aaaaaa, -3px -3px 5px #ffffff;
     }
     .btn-add:active {
       cursor: pointer;
       background: #ffd900;
-      box-shadow: inset 3px 3px 3px #a8a490,
-            inset -3px -3px 3px #ffec7e;
+      box-shadow: inset 3px 3px 3px #a8a490, inset -3px -3px 3px #ffec7e;
     }
   }
 }
