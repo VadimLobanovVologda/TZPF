@@ -33,8 +33,10 @@ export default () => {
     }
     if (prop === 'birthday') {
       const newTable = employees.sort((a, b) => {
-        if (new Date(a[`${prop}`]) < new Date(b[`${prop}`])) return sortDate ? 1 : -1;
-        if (new Date(a[`${prop}`]) > new Date(b[`${prop}`])) return sortDate ? -1 : 1;
+        const dateA = a[`${prop}`].split('.').reverse().join('-');
+        const dateB = b[`${prop}`].split('.').reverse().join('-');
+        if (new Date(dateA) < new Date(dateB)) return sortDate ? 1 : -1;
+        if (new Date(dateA) > new Date(dateB)) return sortDate ? -1 : 1;
         return 0;
       });
       setSortDate(!sortDate);
