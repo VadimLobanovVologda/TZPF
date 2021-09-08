@@ -19,10 +19,10 @@ export default ({ dataEmployee, actionUrl }) => {
 
   const editForm = (e) => {
     const nameEl = e.target.name;
-    setEdit(!edit);
     const complete = testEmptyInput();
 
     if (nameEl === 'save') {
+      setEdit(!edit);
       if (!complete) {
         dispatch(
           showModal(
@@ -46,6 +46,7 @@ export default ({ dataEmployee, actionUrl }) => {
     }
     if (nameEl === 'create') {
       if (!complete) {
+        console.log(birthday);
         dispatch(
           showModal(
             `${name ? '' : 'Имя,'} ${phone ? '' : 'Телефон,'} ${role ? '' : 'Должность,'} ${
@@ -55,6 +56,7 @@ export default ({ dataEmployee, actionUrl }) => {
         );
         return;
       }
+      setEdit(!edit);
       const newEmployee = {
         ...dataEmployee,
         name,
@@ -115,7 +117,9 @@ export default ({ dataEmployee, actionUrl }) => {
             showMaskOnFocus
             id="birthdayEmployee"
             value={birthday}
-            onKeyUp={(e) => setBirthday(e.target.value)}
+            onChange={(value) => {
+              setBirthday(value);
+            }}
             showMaskOnHover
             disabled={!edit}
             required
