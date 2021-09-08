@@ -1,8 +1,14 @@
 import employees from '../data/employees.json';
-import { ADD_EMPLOYEE, EDIT_EMPLOYEE } from '../constants';
+import {
+  ADD_EMPLOYEE, EDIT_EMPLOYEE, HIDE_MODAL, SHOW_MODAL,
+} from '../constants';
 
 const initialState = {
   employees,
+  modal: {
+    text: '',
+    display: false,
+  },
 };
 
 export default function employeesReducer(state = initialState, action) {
@@ -17,13 +23,24 @@ export default function employeesReducer(state = initialState, action) {
       return { ...state, employees: employeesNow };
     }
     case ADD_EMPLOYEE: {
-      console.log(action.payload);
       return {
         ...state,
         employees: [
           ...state.employees,
           { ...action.payload, id: Math.floor(Math.random() * 1000) },
         ],
+      };
+    }
+    case SHOW_MODAL: {
+      return {
+        ...state,
+        modal: { ...state.modal, display: !state.modal.display, text: action.payload },
+      };
+    }
+    case HIDE_MODAL: {
+      return {
+        ...state,
+        modal: { ...state.modal, display: !state.modal.display, text: '' },
       };
     }
     default:

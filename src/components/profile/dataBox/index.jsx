@@ -4,6 +4,7 @@ import ReactInputDateMask from 'react-input-date-mask';
 import { useDispatch } from 'react-redux';
 import { editEmployee, addEmployee } from 'actions/employeeActions';
 import styles from './dataBox.scss';
+import { showModal } from '../../../store/actions/employeeActions';
 
 export default ({ dataEmployee, actionUrl }) => {
   const dispatch = useDispatch();
@@ -14,10 +15,24 @@ export default ({ dataEmployee, actionUrl }) => {
   const [role, setRole] = useState(dataEmployee.role);
   const [isArchive, setIsArchive] = useState(dataEmployee.isArchive);
 
+  const testEmptyInput = () => birthday && name && phone && role;
+
   const editForm = (e) => {
     const nameEl = e.target.name;
     setEdit(!edit);
+    const complete = testEmptyInput();
+
     if (nameEl === 'save') {
+      if (!complete) {
+        dispatch(
+          showModal(
+            `${name ? '' : 'Имя,'} ${phone ? '' : 'Телефон,'} ${role ? '' : 'Должность,'} ${
+              birthday ? '' : 'Дата рождения,'
+            }`,
+          ),
+        );
+        return;
+      }
       const newEmployee = {
         ...dataEmployee,
         name,
@@ -30,6 +45,16 @@ export default ({ dataEmployee, actionUrl }) => {
       return;
     }
     if (nameEl === 'create') {
+      if (!complete) {
+        dispatch(
+          showModal(
+            `${name ? '' : 'Имя,'} ${phone ? '' : 'Телефон,'} ${role ? '' : 'Должность,'} ${
+              birthday ? '' : 'Дата рождения,'
+            }`,
+          ),
+        );
+        return;
+      }
       const newEmployee = {
         ...dataEmployee,
         name,
@@ -41,6 +66,7 @@ export default ({ dataEmployee, actionUrl }) => {
       dispatch(addEmployee(newEmployee));
       return;
     }
+
     setBirthday(dataEmployee.birthday);
     setName(dataEmployee.name);
     setPhone(dataEmployee.phone);
@@ -65,6 +91,7 @@ export default ({ dataEmployee, actionUrl }) => {
             value={name}
             onChange={(e) => setName(e.target.value)}
             disabled={!edit}
+            required
           />
         </label>
 
@@ -77,6 +104,7 @@ export default ({ dataEmployee, actionUrl }) => {
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
             disabled={!edit}
+            required
           />
         </label>
 
@@ -90,6 +118,7 @@ export default ({ dataEmployee, actionUrl }) => {
             onKeyUp={(e) => setBirthday(e.target.value)}
             showMaskOnHover
             disabled={!edit}
+            required
           />
         </label>
 
@@ -118,6 +147,7 @@ export default ({ dataEmployee, actionUrl }) => {
               checked={isArchive}
               onChange={(e) => setIsArchive(e.target.checked)}
               disabled={!edit}
+              required
             />
             {' '}
             - &quot;В архиве&quot;
@@ -130,8 +160,9 @@ export default ({ dataEmployee, actionUrl }) => {
             <input
               type="button"
               name={actionUrl === 'create' ? 'create' : 'save'}
-              value="Сохранить"
+              value={actionUrl === 'create' ? 'Создать' : 'Сохранить'}
               onClick={editForm}
+              required
             />
           ) : null}
         </div>

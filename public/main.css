@@ -59,9 +59,19 @@
   border-radius: 20px;
   overflow: hidden;
 }
+@media (max-width: 300px) {
+  .listEmployees_listEmployees_Jys {
+    font-size: 12px;
+    font-weight: 200;
+  }
+  .listEmployees_listEmployees_Jys * {
+    margin: 0;
+    padding: 0;
+  }
+}
 .listEmployees_listEmployees_Jys .list {
   border-radius: 20px;
-  overflow: hidden;
+  overflow: auto;
   box-shadow: 3px 3px 7px #afafaf, -3px -3px 7px #ffffff;
   padding: 10px;
 }
@@ -324,6 +334,22 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
+}
+.app_app_PTA .wrapModal {
+  background: #333333c4;
+  overflow: visible;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.app_app_PTA .wrapModal .modal {
+  background: white;
+  height: 100px;
+  width: 100px;
+  display: flex;
 }
 /*!**********************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/index.css (1) ***!

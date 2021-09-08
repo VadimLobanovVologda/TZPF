@@ -4,5 +4,8 @@
 # Установка
 - npm i
 
-# Запуск
+# Сборка
 - npm run build
+
+# Запуск
+- npm run start
