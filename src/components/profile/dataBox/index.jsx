@@ -3,11 +3,13 @@ import InputMask from 'react-input-mask';
 import ReactInputDateMask from 'react-input-date-mask';
 import { useDispatch } from 'react-redux';
 import { editEmployee, addEmployee } from 'actions/employeeActions';
+import { useHistory } from 'react-router';
 import styles from './dataBox.scss';
 import { showModal } from '../../../store/actions/employeeActions';
 
 export default ({ dataEmployee, actionUrl }) => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const [edit, setEdit] = useState(actionUrl === 'create');
   const [birthday, setBirthday] = useState(dataEmployee.birthday);
   const [name, setName] = useState(dataEmployee.name);
@@ -46,7 +48,6 @@ export default ({ dataEmployee, actionUrl }) => {
     }
     if (nameEl === 'create') {
       if (!complete) {
-        console.log(birthday);
         dispatch(
           showModal(
             `${name ? '' : 'Имя,'} ${phone ? '' : 'Телефон,'} ${role ? '' : 'Должность,'} ${
@@ -66,7 +67,7 @@ export default ({ dataEmployee, actionUrl }) => {
         birthday,
       };
       dispatch(addEmployee(newEmployee));
-      return;
+      history.push('/');
     }
 
     setBirthday(dataEmployee.birthday);
