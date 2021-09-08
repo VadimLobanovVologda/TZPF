@@ -11,7 +11,7 @@ import DataBox from './dataBox';
 const defaultDataEmployee = {
   name: '',
   isArchive: false,
-  role: '',
+  role: 'cook',
   phone: '',
   birthday: '',
 };
