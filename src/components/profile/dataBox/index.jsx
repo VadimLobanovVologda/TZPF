@@ -69,6 +69,7 @@ export default ({ dataEmployee, actionUrl }) => {
       dispatch(addEmployee(newEmployee));
       history.push('/');
     }
+    setEdit(!edit);
 
     setBirthday(dataEmployee.birthday);
     setName(dataEmployee.name);
